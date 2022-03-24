@@ -1,0 +1,17 @@
+Data_File_Eye_Tracking
+--------------------------------
+
+Scan path Pixel: 2140,221
+Total fixation Time: 1,844316
+Total Tracking Time: 3,40681
+Fixation Number: 6
+Saccade Number: 5
+--------------------------------
+
+Position NR. | Position | Fixation Time
+Pos 0 , (593.2, 309.2) , 0,3837075
+Pos 1 , (366.7, 604.9) , 0,4041077
+Pos 2 , (142.6, 354.0) , 0,262581
+Pos 3 , (223.0, 413.0) , 0,3258782
+Pos 4 , (374.0, 156.9) , 0,243669
+Pos 5 , (1353.4, 489.0) , 0,2243727
