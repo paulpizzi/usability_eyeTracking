@@ -29,7 +29,6 @@ public class EyeTracker : MonoBehaviour
 
     private float trackingTimeComplete;
     private float fixationTime = 0;
-    // private int sccadesCounter = 0;
 
     private float minCricleSize = 0.3f;
     private float maxCricleSize = 2f;
@@ -81,7 +80,7 @@ public class EyeTracker : MonoBehaviour
 
     public void SaveDataToFile()
     {
-        resultsCalculation.SaveToFile(positionList,timeList, trackingTimeComplete);
+        resultsCalculation.SaveToFile(positionList,timeList, trackingTimeComplete,saccadesTreshholdPixel ,minFixationTime);
     }
 
     public void InitTracking()
@@ -192,7 +191,6 @@ public class EyeTracker : MonoBehaviour
         timeList.Clear();
         trackingTimeComplete = 0;
         fixationTime = 0;
-       // sccadesCounter = 0;
         positionList.Clear();
         if (circleList.Count != 0)
         {
@@ -218,13 +216,3 @@ public class EyeTracker : MonoBehaviour
     }
 }
 
-/*  public void DrawSaccadeLines(Vector2 gazePos, Vector2 savedGazePos)
-  {
-      Vector3 gazePosWorld = cam.ScreenToWorldPoint(new Vector3(Mathf.RoundToInt(gazePos.x), Mathf.RoundToInt(gazePos.y), cam.nearClipPlane));
-      Vector3 savedGazePosWorld = cam.ScreenToWorldPoint(new Vector3(Mathf.RoundToInt(savedGazePos.x), Mathf.RoundToInt(savedGazePos.y), cam.nearClipPlane));
-
-      lineRenderer.positionCount = sccadesCounter+2;
-      lineRenderer.SetPosition(sccadesCounter, savedGazePosWorld);
-      lineRenderer.SetPosition(sccadesCounter + 1, gazePosWorld);
-      sccadesCounter = sccadesCounter + 1;
-  }*/

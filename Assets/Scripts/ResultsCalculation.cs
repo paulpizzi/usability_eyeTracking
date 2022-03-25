@@ -53,7 +53,7 @@ public class ResultsCalculation : MonoBehaviour
         return (_positionList.Count-1);
     }
 
-    public void SaveToFile(List<Vector2> _positionList, List<float> _timeList,float _trackingTimeComplete)
+    public void SaveToFile(List<Vector2> _positionList, List<float> _timeList,float _trackingTimeComplete, int saccadeTresh, float minFixation)
     {
         var path = Application.dataPath + "\\Results\\";
         var fileName = "Data_" + System.DateTime.Now.ToString("_yyyy-MM-dd_hh-mm-ss") + ".txt";
@@ -63,22 +63,23 @@ public class ResultsCalculation : MonoBehaviour
             Debug.Log("Test: " + path);
             var sr = File.CreateText(path);
             sr.WriteLine("Data_File_Eye_Tracking");
+            sr.WriteLine("Saccade distance[Pixel]: " + saccadeTresh + " || Fixation time[ms]: " + minFixation * 1000);
             sr.WriteLine("--------------------------------");
             sr.WriteLine("");
 
-            sr.WriteLine("Scan path Pixel: " + CalculateScanPathPixel(_positionList));
-            sr.WriteLine("Total fixation Time: " + CalculateTime(_timeList));
-            sr.WriteLine("Total Tracking Time: " + _trackingTimeComplete);
+            sr.WriteLine("Scan path length [Pixel]: " + CalculateScanPathPixel(_positionList));
+            sr.WriteLine("Total fixation Time[s]: " + CalculateTime(_timeList) + " | [ms]: " + (CalculateTime(_timeList)*1000));
+            sr.WriteLine("Total Tracking Time[s]: " + _trackingTimeComplete + " | [ms]: " + (_trackingTimeComplete * 1000));
             sr.WriteLine("Fixation Number: " + GetFixationNumber(_positionList));
             sr.WriteLine("Saccade Number: " + GetSaccadeNumber(_positionList));
 
             sr.WriteLine("--------------------------------");
             sr.WriteLine("");
-            sr.WriteLine("Position NR. | " + "Position | " + "Fixation Time" );
+            sr.WriteLine("Position NR. | " + "Position | " + "Fixation Time [ms]" );
             int counter = 0;
             foreach(Vector2 pos in _positionList)
             {
-                sr.WriteLine("Pos " + counter + " , " + pos + " , " + _timeList[counter]);
+                sr.WriteLine("Pos " + counter + " , " + pos + " , " + (_timeList[counter]*1000));
                 counter++;
             }
 
