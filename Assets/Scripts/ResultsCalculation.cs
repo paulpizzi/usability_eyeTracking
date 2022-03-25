@@ -56,6 +56,10 @@ public class ResultsCalculation : MonoBehaviour
     public void SaveToFile(List<Vector2> _positionList, List<float> _timeList,float _trackingTimeComplete, int saccadeTresh, float minFixation)
     {
         var path = Application.dataPath + "\\Results\\";
+        if (!Directory.Exists(path))
+        {
+            Directory.CreateDirectory(path);
+        }
         var fileName = "Data_" + System.DateTime.Now.ToString("_yyyy-MM-dd_hh-mm-ss") + ".txt";
         {
             path += fileName;
